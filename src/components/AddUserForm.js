@@ -18,16 +18,18 @@ function AddUserForm() {
       return;
     }
 
-    dispatch(addUser({
+    const newUser = {
       id: Date.now(),
       name,
       email,
       phone: "N/A",
       website: "N/A",
       address: { street: "N/A", city: "N/A" },
-      company: { name: "Local User" }
-    }));
+      company: { name: "Local User" },
+      local: true
+    };
 
+    dispatch(addUser(newUser));
     navigate("/");
   };
 

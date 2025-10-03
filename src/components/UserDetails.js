@@ -14,7 +14,13 @@ function UserDetails() {
       <Card.Body>
         <Card.Title>{user.name}</Card.Title>
         <Card.Text>Phone: {user.phone || "N/A"}</Card.Text>
-        <Card.Text>Website: {user.website || "N/A"}</Card.Text>
+        <Card.Text>
+          Website: {user.website ? (
+            <a href={user.website.startsWith("http") ? user.website : `https://${user.website}`} target="_blank" rel="noopener noreferrer">
+              {user.website}
+            </a>
+          ) : "N/A"}
+        </Card.Text>
         {user.address && (
           <Card.Text>
             Address: {user.address.street}, {user.address.city}
